@@ -7,5 +7,5 @@ public class Product {
     String category;
     String image;
 
-    // Constructor, getters and setters omitted for brevity
+
 }

@@ -1,6 +1,5 @@
 package com.example.listview;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
@@ -9,6 +8,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import com.example.listview.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -29,15 +29,16 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<Product> products = response.body();
                     ListView listView = findViewById(R.id.listView);
-                    ArrayAdapter<Product> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, products);
+                    ProductListAdapter adapter = new ProductListAdapter(MainActivity.this, products);
                     listView.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                // Handle failure
+
             }
         });
     }
 }
+
